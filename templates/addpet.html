@@ -1,0 +1,92 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+    Add Pet
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 80vh;
+        text-align: center;
+    }
+    .content ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2em;
+    }
+    .content ul li {
+        margin-bottom: 0.5em;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+    }
+    .content form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .content form label {
+        margin-bottom: 0.5em;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+    }
+    .content form input[type="text"],
+    .content form input[type="number"] {
+        margin-bottom: 1em;
+        padding: 0.5em;
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+    }
+    .content form input[type="submit"] {
+        padding: 0.5em 2em;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+<div class="content">
+    <h3>Twoi Pupile:</h3>
+    {% if pets %}
+        <ul>
+            {% for pet in pets %}
+                <li>
+                    <strong>Imię Pupila:</strong> {{ pet.name }}<br>
+                    <strong>Rasa Pupila:</strong> {{ pet.race }}<br>
+                    <strong>Wiek Pupila:</strong> {{ pet.age }}<br>
+                    <form action="/confirmdelete" method="post" style="display: inline;">
+                        <input type="hidden" name="pet_id" value="{{ pet.id }}">
+                        <input type="submit" value="Usunąć Pupila?">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nie masz dodanych żadnych przyjaciół. Patrz jak Tosia płacze :'(</p>
+        <img src="https://i.ibb.co/0ZjR2qD/Sad.jpg" alt="Sad">
+    {% endif %}
+
+    <h2>Dodaj Pupila:</h2>
+    <form action="/addpet" method="post">
+        <label for="name">Imię Pupila:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="race">Gatunek Pupila:</label>
+        <input type="text" id="race" name="race" required>
+
+        <label for="age">Wiek Pupila:</label>
+        <input type="number" id="age" name="age" required>
+
+        <input type="submit" value="Dodaj pupila!">
+    </form>
+</div>
+{% endblock %}

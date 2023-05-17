@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+    Confirm Delete
+{% endblock %}
+
+{% block content %}z
+    <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 80vh;">
+        <h3 style="margin-bottom: 1em; font-family: 'Arial', sans-serif; font-size: 24px;">Czy na pewno usunąć Pupila {{ pet.name }} ze swojej brygady?</h3>
+        <h4>Uwaga: Usunięcie Pupila będzie skutkowało usunięciem tego Pupila z historii wizyt!</h4>
+        <form action="/deletepet" method="post">
+            <input type="hidden" name="pet_id" value="{{ pet.id }}">
+            <input type="submit" value="Tak, usuń!">
+        </form>
+        <a href="/addpet">Ups, pomyłka! Wróć do moich Pupili!</a>
+    </div>
+{% endblock %}

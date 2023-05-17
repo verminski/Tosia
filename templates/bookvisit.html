@@ -1,0 +1,87 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+    Book Visit
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .content img {
+        width: 150px;
+        height: 150px;
+        border-radius: 5%;
+        margin-bottom: 20px;
+        object-fit: contain;
+    }
+    .content h2 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .content h4 {
+        margin-bottom: 20px;
+        color: #666;
+    }
+    .content form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+    .content form select,
+    .content form input,
+    .content form textarea {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .content form textarea {
+        resize: none;
+        min-height: 80px;
+    }
+    .content form input[type="submit"] {
+        background-color: #007BFF;
+        border-color: #007BFF;
+        color: white;
+        cursor: pointer;
+    }
+    .content form input[type="submit"]:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+<div class="content">
+    <img src="{{ cat_image_url }}" alt="Cat Image">
+    <h2>Umów się do gabinetu ze swoim Pupilem:)</h2>
+    <h4>Wybierz Pupila, gabinet, datę i godzinę.</h4>
+    <form method="POST">
+        <select name="pet_id" required>
+            {% for pet in pets %}
+            <option value="{{ pet.id }}">{{ pet.name }}</option>
+            {% endfor %}
+        </select>
+        <select name="clinic_id" required>
+            {% for clinic in clinics %}
+            <option value="{{ clinic.id }}">{{ clinic.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="datetime-local" name="visit_time" required>
+        <textarea name="problem" placeholder="Co dolega Twojemu Pupilowi?" required></textarea>
+        <input type="submit" value="Umów się na wizytę!">
+    </form>
+</div>
+{% endblock %}
