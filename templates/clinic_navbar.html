@@ -4,20 +4,20 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <title>{% block title %}{% endblock %}</title>
     <style>
-        .navbar {
+        .clinic-navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: #f8f9fa;
             padding: 1em;
         }
-        .nav-links {
+        .clinic-nav-links {
             display: flex;
             gap: 1em;
             flex-grow: 1;
             justify-content: space-evenly;
         }
-        .nav-links a {
+        .clinic-nav-links a {
             flex-grow: 1;
             display: flex;
             align-items: center;
@@ -30,7 +30,7 @@
             background-color: #007bff;
             transition: background-color 0.3s;
         }
-        .nav-links a:hover {
+        .clinic-nav-links a:hover {
             background-color: #0056b3;
         }
         .btn-logout {
@@ -40,11 +40,10 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="nav-links">
-            <a href="/bookvisit" class="btn btn-primary">Wizyta w Gabinecie</a>
-            <a href="/visithistory" class="btn btn-primary">Historia Wizyt</a>
-            <a href="/addpet" class="btn btn-primary">Dodaj Pupila</a>
+    <div class="clinic-navbar">
+        <div class="clinic-nav-links">
+            <a href="/visits" class="btn btn-primary">Visits</a>
+            <a href="/patients" class="btn btn-primary">Patients</a>
         </div>
     </div>
     <div class="content">

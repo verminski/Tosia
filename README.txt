@@ -1,42 +1,52 @@
-Tosia: A Simple Pet Clinic Web Application
-Tosia is a Flask-based web application designed for managing pet visits to clinics. It allows you to add pets, book their visits to clinics, view visit history, and delete pets when necessary.
+README
 
-Features:
+Tosia: Flask Web Application
+Welcome to Tosia, a Flask web application that helps pet owners manage their pets, book veterinary visits and see a history of visits.
 
-* Add a new pet.
-* Book a visit for a pet to a clinic.
-* View visit history.
-* Delete a pet (soft delete, the pet is marked as inactive).
-* Fetches and displays a random cat image from 'TheCatAPI' at the booking visit page.
+The application uses a SQLite database to store the data and SQLAlchemy as the ORM.
+
+Application Structure
+
+The application consists of three main models:
+
+* Pet: Represents the pets owned by users.
+* Clinic: Represents the veterinary clinics available for visits.
+* Visit: Represents a veterinary visit, related to both a pet and a clinic.
+
+The application also consists of six main routes:
+
+* Home ('/'): The home page.
+* Add Pet ('/addpet'): A page to add a new pet.
+* Confirm Delete ('/confirmdelete'): A confirmation page for deleting a pet.
+* Delete Pet ('/deletepet'): A route to delete a pet.
+* Book Visit ('/bookvisit'): A page to book a veterinary visit.
+* Visit History ('/visithistory'): A page showing a history of veterinary visits.
+
+How to Run
 
 Prerequisites
-The following packages should be installed in your environment:
 
-Flask
-Flask-SQLAlchemy
-blinker
-requests
+Make sure you have the following installed on your system:
 
-Getting Started:
+Python 3.7 or higher
+Flask 1.1.2 or higher
+Flask-SQLAlchemy 2.4.4 or higher
+Requests 2.25.1 or higher
 
-Clone this repository.
+Steps
 
-Install the necessary packages using pip.
+1. Clone this repository to your local machine.
+2. Navigate to the repository's directory through the terminal.
+3. Install the necessary dependencies with the following command:
 
 pip install -r requirements.txt
 
-Run the application:
+Run the application using the following command:
+
 python app.py
 
-Open your web browser and navigate to http://localhost:5000.
+Open a web browser and navigate to http://127.0.0.1:5000/ to see the application in action.
 
-Project Structure
-app.py: This is the main file where the Flask application along with its routes are defined.
-pets.db: This is the SQLite database file where data about pets, visits, and clinics are stored.
-templates: This folder contains the HTML templates used by the application.
+Enjoy managing your pets with the Tosia Flask application!
 
-Future Improvements:
-
-User authentication and authorization.
-Enhanced error handling and user input validation.
-A more comprehensive pet and clinic management system.
+Note: This application is set to run in debug mode for development purposes. For deployment, make sure to set debug=False in the app.run() function.

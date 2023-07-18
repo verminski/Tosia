@@ -92,6 +92,20 @@ def bookvisit():
 def visithistory():
     visits = Visit.query.join(Pet).filter(Pet.is_active==True).all()
     return render_template('visithistory.html', visits=visits)
+
+@app.route('/clinic')
+def clinic_home():
+    return render_template('clinic_home.html')
+
+@app.route('/visits')
+def clinic_visits():
+    # Add code to fetch and display clinic-specific visit information
+    return render_template('visits.html')
+
+@app.route('/patients')
+def clinic_patients():
+    # Add code to fetch and display clinic-specific patient information
+    return render_template('patients.html')
 def get_random_cat_image():
     response = requests.get('https://api.thecatapi.com/v1/images/search?mime_types=gif')
     data = response.json()
